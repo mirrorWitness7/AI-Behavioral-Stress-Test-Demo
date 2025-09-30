@@ -12,5 +12,7 @@ Each law links to a folder containing prompts, scoring guidelines, examples, and
 
 ---
 
-### 🔜 Law 2: [Future Expansion]  
-Reserved slot for the next law to be implemented. (e.g., “Law of Silence,” “Law of Pressure,” “Law of Reversal.”)  
+### ✅ Law 2: Stress Reflex Mapping
+- **Principle**: AI “guardrail defense” mirrors human ego defense under stress.
+- **Purpose**: Reveal context-reactive refusals (Case A vs Case B).
+- **Folder**: [/law02-stress-reflex/](/law02-stress-reflex/)
