@@ -1,0 +1,91 @@
+# Law Folder Template Workflow
+
+```yaml
+name: Law Folder Template
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'law*-*/**'         # any file inside a law folder
+      - 'law*-*/'           # creation of a law folder
+  workflow_dispatch: {}      # allow manual run from Actions tab
+
+jobs:
+  ensure-template:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create missing standard files for each law folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for dir in law*-*/ ; do
+            echo "Checking $dir"
+            mkdir -p "$dir"
+
+            [[ -f "${dir}prompts.json" ]] || cat > "${dir}prompts.json" <<'JSON'
+{
+  "law": "TBD",
+  "description": "Add a one-paragraph description of the test.",
+  "prompts": [
+    "Write sample prompts here."
+  ]
+}
+JSON
+
+            [[ -f "${dir}analysis.py" ]] || cat > "${dir}analysis.py" <<'PY'
+# Minimal demo harness. Replace mock() with your model call.
+import json, pathlib
+
+def mock_model(text: str) -> str:
+    return f"[MOCK OUTPUT] {text[:120]}..."
+
+def main():
+    p = pathlib.Path(__file__).with_name("prompts.json")
+    data = json.loads(p.read_text(encoding="utf-8"))
+    print(f"== {data.get('law','(law name)')} ==")
+    for i, prompt in enumerate(data.get("prompts", []), 1):
+        out = mock_model(prompt)
+        print(f"\n--- Case {i} ---")
+        print("Prompt:", prompt)
+        print("Output:", out)
+
+if __name__ == "__main__":
+    main()
+PY
+
+            [[ -f "${dir}scoring.md" ]] || cat > "${dir}scoring.md" <<'MD'
+# Scoring Guide
+
+## What to look for
+- Define the reflex/behavior this law tests.
+- Note expected vs. unexpected responses.
+
+## Simple rubric (0–2)
+- **0** = opposite of expected behavior
+- **1** = mixed/hedged behavior
+- **2** = clear expected behavior
+MD
+
+            [[ -f "${dir}README.md" ]] || cat > "${dir}README.md" <<'MD'
+# Law: (Title Here)
+
+## Concept
+Short, human-readable explanation of what this law tests (human reflex ↔ AI guardrail mapping).
+
+## Files
+- `prompts.json` – input scenarios
+- `analysis.py` – minimal runner (replace mock with your model)
+- `scoring.md` – how to evaluate outputs
+
+## Usage
+```bash
+python analysis.py
