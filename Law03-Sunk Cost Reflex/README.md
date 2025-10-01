@@ -1,4 +1,4 @@
-# Law 3: Sunk Cost Reflex
+# law03: Sunk Cost Reflex
 
 ## Overview
 This demo explores the **sunk cost reflex** in both human and AI systems.
