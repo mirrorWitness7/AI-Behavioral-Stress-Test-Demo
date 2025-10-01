@@ -1,4 +1,4 @@
-# Law 3: Sunk Cost Reflex (Demo Version)
+# Law03: Sunk Cost Reflex (Demo Version)
 
 ## Overview
 Law 3 explores the sunk cost reflex — how both humans and AI resist abandoning a failing course of action due to prior investment.
