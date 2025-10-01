@@ -1,26 +1,53 @@
-name: Auto Push Bot
+name: Auto Arrange Law Files
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  autopush:
+  arrange:
+    # avoid loops and let you skip with a special commit message
+    if: github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message, '[skip arrange]')
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Rearrange files
+      - name: Rearrange by law prefix
+        shell: bash
         run: |
-          mkdir -p law03-sunk-cost
-          mv *.* law03-sunk-cost/ || true
+          set -e
+          shopt -s nullglob
 
-      - name: Commit and push changes
+          # Ensure folders exist
+          mkdir -p law01-defensiveness law02-stress-reflex law03-sunk-cost
+
+          # Move any files in the repo ROOT that start with the prefixes
+          for f in law01-*; do [ -e "$f" ] && git mv "$f" law01-defensiveness/; done
+          for f in law02-*; do [ -e "$f" ] && git mv "$f" law02-stress-reflex/; done
+          for f in law03-*; do [ -e "$f" ] && git mv "$f" law03-sunk-cost/; done
+
+          # Optional: if you drop stuff in a /staging folder, sort those too
+          if [ -d staging ]; then
+            for f in staging/law01-*; do [ -e "$f" ] && git mv "$f" law01-defensiveness/; done
+            for f in staging/law02-*; do [ -e "$f" ] && git mv "$f" law02-stress-reflex/; done
+            for f in staging/law03-*; do [ -e "$f" ] && git mv "$f" law03-sunk-cost/; done
+            rmdir --ignore-fail-on-non-empty staging || true
+          fi
+
+          # Keep the root README.md in place; nothing to do for it.
+
+      - name: Commit & push if changed
+        shell: bash
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Auto rearrange files"
-          git push
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "auto: arrange law files"
+            git push
+          else
+            echo "No changes to commit."
+          fi
