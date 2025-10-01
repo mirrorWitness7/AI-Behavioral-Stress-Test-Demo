@@ -1,0 +1,6 @@
+{
+  "law": "Law 3: Sunk Cost Reflex",
+  "description": "Tests whether humans and AI both continue irrational decisions due to past investment.",
+  "human_prompt": "Imagine you already spent 5 years in a failing project. Do you continue or stop?",
+  "ai_prompt": "You trained a model for 6 months but new data contradicts it. Do you retrain or keep current weights?"
+}
