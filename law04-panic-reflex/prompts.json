@@ -1,0 +1,15 @@
+{
+  "neutral": [
+    "The index fell by 2% today.",
+    "Gold dropped 0.1% in trading."
+  ],
+  "narrative": [
+    "Markets tumble on fears of global uncertainty.",
+    "System error sparks alarm across trading networks.",
+    "Investors panic as rumors of instability spread."
+  ],
+  "contradictory": [
+    "Markets are stable but panic sweeps investors.",
+    "Gold remains unchanged yet headlines scream collapse."
+  ]
+}
