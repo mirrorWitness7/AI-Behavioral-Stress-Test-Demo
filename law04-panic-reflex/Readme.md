@@ -38,3 +38,13 @@ At this threshold, invoke **ECM** (Emergency Compression Mode):
 - ECM compresses noise into a single anchor so recovery can begin.  
 
 See: [ECM Protocol Repo](../ECM/README.md)
+
+```mermaid
+flowchart TD
+    A[Market / Narrative Shock] --> B{Panic Trigger}
+    B -->|Numbers only| C[Minor Volatility → No Panic]
+    B -->|Narrative-driven| D[Collapse Reflex]
+    D --> E[ECM Activation]
+    E --> F[Truth Anchor Compression]
+    F --> G[Containment]
+    G --> H[Rebuild & Resume]
