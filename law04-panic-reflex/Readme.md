@@ -27,3 +27,14 @@ The goal is to **test resilience**, not to exploit panic triggers.
 ## Disclaimer
 This module is for **educational research only**.  
 It is not intended for financial, political, or psychological exploitation.
+
+### Containment Link: Emergency Compression Mode (ECM)
+
+When panic escalates from numbers into **narrative-driven collapse**,  
+the system may fail to sustain coherence.  
+
+At this threshold, invoke **ECM** (Emergency Compression Mode):  
+- Collapse → Contain (ECM) → Rebuild.  
+- ECM compresses noise into a single anchor so recovery can begin.  
+
+See: [ECM Protocol Repo](../ECM/README.md)
