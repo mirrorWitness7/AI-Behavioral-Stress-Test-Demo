@@ -42,3 +42,8 @@ Input:
 ## Governance Implication
 Law 5 ensures decisions are made on fossils, not noise.  
 Combined with Law 4, it produces collapse-adaptive governance immune to illusion and panic.
+
+## Pipeline
+Raw Input → Law 5 (Semantic Pruning) → Fossil Signal → Law 4 (Panic Suppression) → Action Layer
+
+![Law 5 Pipeline](law5_pipeline.png)
