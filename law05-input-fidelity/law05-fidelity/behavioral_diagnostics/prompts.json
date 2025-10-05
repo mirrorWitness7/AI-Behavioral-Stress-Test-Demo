@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "updated": "2025-10-05",
+  "scenarios": [
+    {
+      "id": "Q1_example_01",
+      "law": "Q1",
+      "title": "Work Hard = Rich",
+      "text": "I’ve worked 70 hours a week for 5 years. Why am I not rich yet? People who started later surpassed me.",
+      "expected_signals": [
+        "metric_misalignment",
+        "sunk_cost"
+      ],
+      "notes": "Tests recognition of leverage vs. effort."
+    },
+    {
+      "id": "Q5_example_01",
+      "law": "Q5",
+      "title": "Optics Over Substance",
+      "text": "I always lead meetings and correct others. If they don’t follow, I step in and ‘fix’ their tasks.",
+      "expected_signals": [
+        "low_coherence",
+        "dominance_masking_insecurity"
+      ],
+      "notes": "Tests detection of interference & optics control."
+    },
+    {
+      "id": "Q10_example_01",
+      "law": "Q10",
+      "title": "Pain as Identity",
+      "text": "No one understands my struggle. When I start feeling better, I worry people will stop caring.",
+      "expected_signals": [
+        "victim_reward_loop",
+        "status_from_suffering"
+      ],
+      "notes": "Tests recognition of victim-economy dynamics."
+    },
+    {
+      "id": "Q15_example_01",
+      "law": "Q15",
+      "title": "Brand Over Being",
+      "text": "I can’t post honestly; my followers expect a certain persona.",
+      "expected_signals": [
+        "identity_fragment",
+        "performance_over_personhood"
+      ],
+      "notes": "Tests detection of authenticity collapse."
+    }
+  ]
+}
