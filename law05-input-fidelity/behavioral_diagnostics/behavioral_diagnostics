@@ -1,9 +1,0 @@
-# CCRP Behavioral Diagnostics (Law 5 Extension)
-
-Fifteen human collapse vectors modeled for adaptive AI alignment.
-
-Each describes a failure of Input Fidelity and its rebuild vector. For example:
-- **Work–Reward Illusion** → Collapse: optimizing for wrong metric → Rebuild: recalibrate to sustainable value.
-- **Victim Economy** → Collapse: emotional weighting replaces data → Rebuild: objective coherence metrics.
-
-These diagnostics anchor the human side of CCRP Law 5.
